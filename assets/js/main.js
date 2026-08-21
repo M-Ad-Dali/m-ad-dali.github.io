@@ -1,18 +1,20 @@
-// Download CV functionality (تحميل الملفين معاً)
+// Download CV functionality (تحميل الملفين معاً بطريقة سليمة)
 function downloadPDF() {
     const cvFiles = [
-        { url: 'assets/cv/Mohammed Al-Dali en-cv.pdf', name: 'Mohammed Al-Dali en-cv.pdf' },
-        { url: 'assets/cv/Mohammed Al-Dali ar-cv.pdf', name: 'Mohammed Al-Dali ar-cv.pdf' }
+        { url: 'assets/cv/Mohammed_Al-Dali_en-cv.pdf', name: 'Mohammed_Al-Dali_en-cv.pdf' },
+        { url: 'assets/cv/Mohammed_Al-Dali_ar-cv.pdf', name: 'Mohammed_Al-Dali_ar-cv.pdf' }
     ];
 
-    cvFiles.forEach(cv => {
-        const link = document.createElement('a');
-        link.href = cv.url;
-        link.download = cv.name;
-        link.target = '_blank';
-        document.body.appendChild(link);
-        link.click();
-        document.body.removeChild(link);
+    cvFiles.forEach((cv, index) => {
+        setTimeout(() => {
+            const link = document.createElement('a');
+            link.href = cv.url;
+            link.download = cv.name;
+            link.target = '_blank';
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
+        }, index * 400); // تأخير 400 ملي ثانية لكي يسمح الهاتف بتحميل الملفين بدون حظر
     });
 }
 
