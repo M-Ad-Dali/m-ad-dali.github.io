@@ -5,7 +5,9 @@ function downloadPDF() {
         { url: 'assets/cv/Mohammed Al-Dali ar-cv.pdf', name: 'Mohammed Al-Dali ar-cv.pdf' }
     ];
 
-    cvFiles.forEach(cv => {
+    cvFiles.forEach((cv, index) => {
+
+        setTimeout(() => {
         const link = document.createElement('a');
         link.href = cv.url;
         link.download = cv.name;
@@ -13,6 +15,7 @@ function downloadPDF() {
         document.body.appendChild(link);
         link.click();
         document.body.removeChild(link);
+        }, index * 1200);
     });
 }
 
